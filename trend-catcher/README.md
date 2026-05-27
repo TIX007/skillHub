@@ -1,4 +1,4 @@
-# 爆款捕手（Trend Catcher） — 使用指南
+# 爆款复刻创作（Trend Catcher） — 使用指南
 
 ## 一句话介绍
 
