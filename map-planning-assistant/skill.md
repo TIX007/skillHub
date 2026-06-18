@@ -1,6 +1,57 @@
+---
+name: map-planning-assistant
+version: 1.0.1
+description: 全能聚合地图规划助理 - 基于高德Web服务API打造的全场景、全周期LBS地图助理
+author: tix007
+license: MIT
+keywords:
+  - 地图规划
+  - 遛狗地图
+  - 跑步地图
+  - 溜娃地图
+  - 美食地图
+  - 旅行规划
+  - 高德地图
+  - LBS
+triggers:
+  - 地图生成
+  - 地图规划
+  - 游玩地图
+  - 遛狗地图
+  - 跑步地图
+  - 溜娃地图
+  - 美食地图
+  - 夜市
+  - 早市
+  - 烟火
+  - 市井
+  - 打卡地图
+  - 露营地图
+  - 旅行规划
+  - 用户画像
+  - 历史游历
+  - 本地活动
+  - 人文讲解
+  - 历史典故
+dependencies:
+  runtime: node.js >= 14.0.0
+  api: 高德地图Web服务API
+  env:
+    - AMAP_API_KEY
+entry: src/index.js
+files:
+  - src/**/*.js
+  - data/*.json
+  - skill.md
+  - README.md
+  - TUTORIAL.md
+---
+
 # 全能聚合地图规划助理
 
 基于高德Web服务API打造的全场景、全周期LBS地图助理，整合遛狗、跑步、溜娃、美食、烟火市井、旅行、人文科普七大核心场景。
+
+> 📖 **详细教程**：请查看 [TUTORIAL.md](TUTORIAL.md) 获取完整使用指南
 
 ## 触发条件
 
@@ -204,70 +255,6 @@ export AMAP_API_KEY=你的高德API密钥
 - 建筑历史、民俗文化、当地典故
 - 游玩小贴士、最佳拍照机位
 - 本土冷知识
-
-### 个人地图生成
-
-基于高德 `maps_schema_personal_map` API 创建个人地图：
-
-- **API参数**：
-  - `key`: 高德API密钥
-  - `sceneType=2`: 仅创建资源点（打卡点位标记模式）
-  - `points`: POI坐标集合（经纬度用逗号分隔）
-
-- **功能特性**：
-  - 批量导入所有打卡点到个人地图
-  - 生成高德可识别的二维码
-  - 用户扫码直达高德App查看全量打卡点
-  - 支持一键导航到任意点位
-  - 可分享给好友或保存到相册
-
-- **点位限制**：
-  - 单次最多创建包含50个点位的地图
-  - 超过50个点位时自动分批创建
-  - 每批生成独立的二维码和链接
-
-- **坐标验证**：
-  - 自动验证经纬度有效性
-  - 过滤超出中国范围的无效坐标（经度73-135，纬度3-53）
-  - 确保坐标格式正确（经度,纬度）
-
-- **API调用示例**：
-  ```javascript
-  // 调用高德个人地图创建API
-  const result = await request('maps_schema_personal_map', {
-    key: 'YOUR_AMAP_API_KEY',
-    sceneType: '2',  // 仅创建资源点（打卡点位标记模式）
-    points: JSON.stringify([
-      {
-        name: '朝阳公园',
-        location: '116.473,39.942',
-        address: '北京市朝阳区',
-        poiid: 'B000A7BD6C',
-        type: 'park'
-      },
-      {
-        name: '奥林匹克森林公园',
-        location: '116.385,40.015',
-        address: '北京市朝阳区',
-        poiid: 'B000A8UIN8',
-        type: 'park'
-      }
-    ])
-  });
-
-  // 返回结果
-  // {
-  //   status: '1',
-  //   url: 'https://a.amap.com/xxx',  // 地图链接
-  //   qr_code: 'https://a.amap.com/qr/xxx'  // 二维码链接
-  // }
-  ```
-
-- **使用方式**：
-  1. 扫描二维码或点击链接
-  2. 在高德App中查看全部打卡点位
-  3. 支持一键导航到任意点位
-  4. 可分享给好友或保存到相册
 
 ## 异常处理
 
