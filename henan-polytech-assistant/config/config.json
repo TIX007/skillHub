@@ -1,0 +1,14 @@
+{
+  "amap_key": "在此填入你的高德地图Web服务API Key",
+  "home": {
+    "city": "",
+    "station": "",
+    "address": ""
+  },
+  "campus": {
+    "name": "河南理工大学",
+    "location": "113.2486,35.2347",
+    "address": "河南省焦作市山阳区世纪大道2001号",
+    "nearest_stations": ["焦作", "焦作西"]
+  }
+}
